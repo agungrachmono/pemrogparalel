@@ -1,0 +1,38 @@
+from decimal import *
+import csv
+import string
+import random
+
+#generate Nama random
+def randomString(stringLength=10):
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
+#generate Nilai random
+def nilaiRan():
+    nilai = random.randint(1,10)*10
+    return nilai
+
+#generate NPM random
+def NPM():
+    random_npm = round(Decimal(random.uniform(500.0,799.9)*10000),0)
+    return random_npm
+
+#penulisan data Dummy
+with open('Dataset_Mahasiswa.csv', 'w', newline='') as f:
+    cetak = csv.writer(f)
+
+    cetak.writerow(['Nomor','Nama','NPM','Nilai1','Nilai2',
+                   'Nilai3','Nilai4','Nilai5','Nilai6','Nilai7',
+                   'Nilai8','Nilai9','Nilai10','Nilai11','Nilai12',
+                   'Nilai13','Nilai14','Nilai15','Nilai16','Nilai17',
+                   'Nilai18','Nilai19','Nilai20','Nilai21','Nilai22',
+                   'Nilai23','Nilai24'])
+
+    for x in range (1,1000001):
+        cetak.writerow([x, randomString(), NPM(), nilaiRan(),
+                   nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),
+                   nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),
+                   nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),
+                   nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),nilaiRan(),
+                   nilaiRan(),nilaiRan(),nilaiRan()])
