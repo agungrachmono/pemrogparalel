@@ -1,0 +1,39 @@
+from decimal import *
+import csv
+import string
+import random
+
+#generate Nama random
+def randomNama(stringLength=10):
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
+#fungsi generate Alamat random
+def randomAlamat(stringLength=10):
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
+#fungsi generate Y atau T
+def ind_YT():
+    indikator = ''
+    hasil = random.randint(1,10)
+    if hasil % 2 == 0:
+        indikator = 'Y'
+    elif hasil % 2 == 1:
+        indikator = 'T'
+    return indikator
+    return hasil
+
+
+#penulisan data Dummy
+with open('Dataset_Kesehatan.csv', 'w', newline='') as f:
+    cetak = csv.writer(f)
+
+    cetak.writerow(['Nomor','Nama','Alamat','Indikator1','Indikator2',
+                   'Indikator3','Indikator4','Indikator5','Indikator6','Indikator7',
+                   'Indikator8','Indikator9','Indikator10','Indikator11','Indikator12'])
+
+    for x in range (1,1000001):
+        cetak.writerow([x, randomNama(), 'Jln.' + randomAlamat(), ind_YT(), ind_YT(),
+                   ind_YT(),ind_YT(),ind_YT(),ind_YT(),ind_YT(),
+                   ind_YT(),ind_YT(),ind_YT(),ind_YT(),ind_YT()])
